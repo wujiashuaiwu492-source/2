@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>预约演示 — NovaMind AI</title>
+  <meta name="description" content="NovaMind AI 企业级智能解决方案 — 预约演示" />
+  <meta name="keywords" content="AI解决方案,企业人工智能,大模型部署,智能风控,知识图谱,NovaMind" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#0e1015" />
+  
+  <link rel="stylesheet" href="/assets/style.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'nova-deep': '#0e1015',
+            'nova-dark': '#161920',
+            'nova-card': '#1c2029',
+            'nova-hover': '#222733',
+            'nova-elev': '#282d3a',
+            'nova-cyan': '#00d4aa',
+            'nova-blue': '#4a9eff',
+            'nova-muted': '#6b7280',
+          }
+        }
+      }
+    }
+  </script>
+  <script src="/assets/app.js" defer></script>
+</head>
+<body class="bg-nova-deep text-[#c8ccd4] antialiased">
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 bg-nova-deep/85 backdrop-blur-xl border-b border-white/[0.06] transition-all duration-500">
+  <div class="max-w-[1280px] mx-auto flex items-center justify-between h-16 px-0">
+    <a href="/" class="text-lg font-bold text-[#e8eaed] flex items-center gap-2">Nova<span class="text-nova-cyan">Mind</span></a>
+    <div class="hidden md:flex items-center gap-1">
+      <a href="/" class="nav-link  px-3 py-2 text-sm font-medium text-[#9ca3af] hover:text-[#e8eaed] rounded-md transition-all duration-350 relative">首页</a>
+      <a href="/solutions/" class="nav-link  px-3 py-2 text-sm font-medium text-[#9ca3af] hover:text-[#e8eaed] rounded-md transition-all duration-350 relative">解决方案</a>
+      <a href="/features/" class="nav-link  px-3 py-2 text-sm font-medium text-[#9ca3af] hover:text-[#e8eaed] rounded-md transition-all duration-350 relative">产品功能</a>
+      <a href="/cases/" class="nav-link  px-3 py-2 text-sm font-medium text-[#9ca3af] hover:text-[#e8eaed] rounded-md transition-all duration-350 relative">案例展示</a>
+      <a href="/company/about.html" class="nav-link active px-3 py-2 text-sm font-medium text-[#9ca3af] hover:text-[#e8eaed] rounded-md transition-all duration-350 relative">技术团队</a>
+      <a href="/company/contact.html" class="nav-cta ml-3 px-4 py-2 text-sm font-semibold text-nova-deep bg-nova-cyan hover:bg-[#00e8bc] hover:shadow-[0_0_24px_rgba(0,212,170,0.15)] rounded-md transition-all duration-350 hover:-translate-y-0.5">合作咨询</a>
+    </div>
+    <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-2 cursor-pointer z-50 relative bg-transparent border-none" aria-label="菜单">
+      <span class="block w-6 h-0.5 bg-[#9ca3af] rounded transition-all duration-300 origin-center"></span>
+      <span class="block w-6 h-0.5 bg-[#9ca3af] rounded transition-all duration-300 origin-center"></span>
+      <span class="block w-6 h-0.5 bg-[#9ca3af] rounded transition-all duration-300 origin-center"></span>
+    </button>
+  </div>
+  <div id="mobileMenu" class="md:hidden overflow-hidden" style="max-height:0;transition:max-height 0.4s ease">
+    <div class="flex flex-col gap-1 pb-4 px-2">
+      <a href="/" class="block px-4 py-3 text-sm font-medium text-[#9ca3af] hover:text-[#e8eaed] hover:bg-white/[0.03] rounded-md transition-all duration-350">首页</a>
+      <a href="/solutions/" class="block px-4 py-3 text-sm font-medium text-[#9ca3af] hover:text-[#e8eaed] hover:bg-white/[0.03] rounded-md transition-all duration-350">解决方案</a>
+      <a href="/features/" class="block px-4 py-3 text-sm font-medium text-[#9ca3af] hover:text-[#e8eaed] hover:bg-white/[0.03] rounded-md transition-all duration-350">产品功能</a>
+      <a href="/cases/" class="block px-4 py-3 text-sm font-medium text-[#9ca3af] hover:text-[#e8eaed] hover:bg-white/[0.03] rounded-md transition-all duration-350">案例展示</a>
+      <a href="/company/about.html" class="block px-4 py-3 text-sm font-medium text-[#9ca3af] hover:text-[#e8eaed] hover:bg-white/[0.03] rounded-md transition-all duration-350">技术团队</a>
+      <a href="/company/contact.html" class="block ml-2 mr-2 mt-1 px-4 py-3 text-sm font-semibold text-nova-deep bg-nova-cyan hover:bg-[#00e8bc] rounded-md transition-all text-center">合作咨询</a>
+    </div>
+  </div>
+</nav><div id="toast" class="toast"></div><div class="breadcrumbs max-w-[1280px] mx-auto px-4 sm:px-8 pt-28 pb-2 text-sm text-[#6b7280]">
+    <a href="/" class="hover:text-nova-cyan transition">首页</a> › <span class="text-nova-cyan">预约演示</span>
+  </div>
+<section class="page-hero">
+  <div class="container">
+    <span class="section-label">预约演示</span>
+    <h1>预约产品演示</h1>
+    <p>填写表单，我们的解决方案专家将在24小时内与您联系，为您安排专属演示。</p>
+  </div>
+</section>
+
+<section class="py-16 sm:py-20 bg-nova-dark">
+  <div class="max-w-[680px] mx-auto px-4 sm:px-8">
+    <form id="bookingForm" class="bg-nova-card border border-white/[0.06] rounded-xl p-6 sm:p-10 flex flex-col gap-5 reveal">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="form-group"><label class="text-sm font-medium text-[#9ca3af]">姓名 <span class="text-red-400">*</span></label><input type="text" name="name" placeholder="请输入姓名" required class="bg-nova-dark border border-white/[0.06] rounded-md px-4 py-3 text-sm text-[#e8eaed] outline-none transition-all duration-350 placeholder:text-[#6b7280] focus:border-nova-cyan focus:shadow-[0_0_0_3px_rgba(0,212,170,0.15)]" /></div>
+        <div class="form-group"><label class="text-sm font-medium text-[#9ca3af]">企业名称 <span class="text-red-400">*</span></label><input type="text" name="company" placeholder="请输入企业名称" required class="bg-nova-dark border border-white/[0.06] rounded-md px-4 py-3 text-sm text-[#e8eaed] outline-none transition-all duration-350 placeholder:text-[#6b7280] focus:border-nova-cyan focus:shadow-[0_0_0_3px_rgba(0,212,170,0.15)]" /></div>
+      </div>
+      <div class="form-group"><label class="text-sm font-medium text-[#9ca3af]">联系邮箱 <span class="text-red-400">*</span></label><input type="email" name="email" placeholder="you@company.com" required class="bg-nova-dark border border-white/[0.06] rounded-md px-4 py-3 text-sm text-[#e8eaed] outline-none transition-all duration-350 placeholder:text-[#6b7280] focus:border-nova-cyan focus:shadow-[0_0_0_3px_rgba(0,212,170,0.15)]" /></div>
+      <div class="form-group"><label class="text-sm font-medium text-[#9ca3af]">手机号码</label><input type="tel" name="phone" placeholder="请输入手机号码" class="bg-nova-dark border border-white/[0.06] rounded-md px-4 py-3 text-sm text-[#e8eaed] outline-none transition-all duration-350 placeholder:text-[#6b7280] focus:border-nova-cyan focus:shadow-[0_0_0_3px_rgba(0,212,170,0.15)]" /></div>
+      <div class="form-group"><label class="text-sm font-medium text-[#9ca3af]">所属行业</label><select name="industry" class="bg-nova-dark border border-white/[0.06] rounded-md px-4 py-3 text-sm text-[#e8eaed] outline-none transition-all duration-350 focus:border-nova-cyan focus:shadow-[0_0_0_3px_rgba(0,212,170,0.15)]"><option value="">请选择</option><option>金融</option><option>医疗</option><option>制造</option><option>零售</option><option>能源</option><option>其他</option></select></div>
+      <div class="form-group"><label class="text-sm font-medium text-[#9ca3af]">感兴趣的产品（可多选）</label>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+          <label class="flex items-center gap-2 bg-nova-dark border border-white/[0.06] rounded-md px-3 py-2 cursor-pointer transition-all duration-350 hover:border-nova-cyan/30"><input type="checkbox" name="products" value="多源数据融合引擎" class="accent-nova-cyan" /><span class="text-xs text-[#9ca3af]">多源数据融合引擎</span></label><label class="flex items-center gap-2 bg-nova-dark border border-white/[0.06] rounded-md px-3 py-2 cursor-pointer transition-all duration-350 hover:border-nova-cyan/30"><input type="checkbox" name="products" value="大模型推理平台" class="accent-nova-cyan" /><span class="text-xs text-[#9ca3af]">大模型推理平台</span></label><label class="flex items-center gap-2 bg-nova-dark border border-white/[0.06] rounded-md px-3 py-2 cursor-pointer transition-all duration-350 hover:border-nova-cyan/30"><input type="checkbox" name="products" value="行业知识图谱" class="accent-nova-cyan" /><span class="text-xs text-[#9ca3af]">行业知识图谱</span></label><label class="flex items-center gap-2 bg-nova-dark border border-white/[0.06] rounded-md px-3 py-2 cursor-pointer transition-all duration-350 hover:border-nova-cyan/30"><input type="checkbox" name="products" value="智能决策中枢" class="accent-nova-cyan" /><span class="text-xs text-[#9ca3af]">智能决策中枢</span></label><label class="flex items-center gap-2 bg-nova-dark border border-white/[0.06] rounded-md px-3 py-2 cursor-pointer transition-all duration-350 hover:border-nova-cyan/30"><input type="checkbox" name="products" value="业务流程自动化" class="accent-nova-cyan" /><span class="text-xs text-[#9ca3af]">业务流程自动化</span></label><label class="flex items-center gap-2 bg-nova-dark border border-white/[0.06] rounded-md px-3 py-2 cursor-pointer transition-all duration-350 hover:border-nova-cyan/30"><input type="checkbox" name="products" value="AI运维监控台" class="accent-nova-cyan" /><span class="text-xs text-[#9ca3af]">AI运维监控台</span></label>
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="form-group"><label class="text-sm font-medium text-[#9ca3af]">预约日期</label><input type="date" name="date" class="bg-nova-dark border border-white/[0.06] rounded-md px-4 py-3 text-sm text-[#e8eaed] outline-none transition-all duration-350 focus:border-nova-cyan focus:shadow-[0_0_0_3px_rgba(0,212,170,0.15)]" /></div>
+        <div class="form-group"><label class="text-sm font-medium text-[#9ca3af]">预约时段</label><select name="time" class="bg-nova-dark border border-white/[0.06] rounded-md px-4 py-3 text-sm text-[#e8eaed] outline-none transition-all duration-350 focus:border-nova-cyan focus:shadow-[0_0_0_3px_rgba(0,212,170,0.15)]"><option value="">请选择</option><option>09:00-10:00</option><option>10:00-11:00</option><option>11:00-12:00</option><option>14:00-15:00</option><option>15:00-16:00</option><option>16:00-17:00</option></select></div>
+      </div>
+      <div class="form-group"><label class="text-sm font-medium text-[#9ca3af]">其他需求</label><textarea name="message" placeholder="请描述您感兴趣的场景或特殊需求……" class="bg-nova-dark border border-white/[0.06] rounded-md px-4 py-3 text-sm text-[#e8eaed] outline-none transition-all duration-350 placeholder:text-[#6b7280] focus:border-nova-cyan focus:shadow-[0_0_0_3px_rgba(0,212,170,0.15)] resize-vertical min-h-[80px]"></textarea></div>
+      <button type="submit" id="bookingBtn" class="w-full inline-flex items-center justify-center gap-2 bg-nova-cyan text-nova-deep font-semibold px-8 py-3 rounded-md text-[0.95rem] transition-all duration-350 hover:bg-[#00e8bc] hover:shadow-[0_0_32px_rgba(0,212,170,0.15)]"><span id="bookingBtnText">提交预约 →</span><span id="bookingBtnSpinner" class="hidden w-4 h-4 border-2 border-nova-deep border-t-transparent rounded-full animate-spin"></span></button>
+    </form>
+
+    <!-- Direct contact -->
+    <div class="mt-12 text-center reveal">
+      <p class="text-[#6b7280] mb-4">或直接联系我们</p>
+      <div class="flex flex-wrap justify-center gap-6">
+        <a href="mailto:wujiashuaiwu492@gmail.com" class="text-nova-cyan hover:underline text-sm">wujiashuaiwu492@gmail.com</a>
+        <span class="text-[#6b7280] hidden sm:inline">|</span>
+        <span class="text-sm text-[#9ca3af]">400-8820-NOVA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="bg-nova-deep border-t border-white/[0.06] pt-16 pb-8">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+      <div class="sm:col-span-2 lg:col-span-1">
+        <div class="text-xl font-bold text-[#e8eaed] mb-4">Nova<span class="text-nova-cyan">Mind</span></div>
+        <p class="text-sm text-[#6b7280] max-w-xs leading-relaxed mb-6">企业级人工智能解决方案提供商，致力于通过前沿AI技术赋能千行百业实现智能化升级。</p>
+        <div class="flex gap-3">
+          <a href="mailto:wujiashuaiwu492@gmail.com" class="w-9 h-9 rounded-md bg-nova-card border border-white/[0.06] flex items-center justify-center text-sm text-[#6b7280] transition-all duration-350 hover:bg-nova-cyan/10 hover:border-nova-cyan hover:text-nova-cyan hover:scale-110">✉</a>
+          <a href="#" class="w-9 h-9 rounded-md bg-nova-card border border-white/[0.06] flex items-center justify-center text-sm text-[#6b7280] transition-all duration-350 hover:bg-nova-cyan/10 hover:border-nova-cyan hover:text-nova-cyan hover:scale-110">in</a>
+          <a href="#" class="w-9 h-9 rounded-md bg-nova-card border border-white/[0.06] flex items-center justify-center text-sm text-[#6b7280] transition-all duration-350 hover:bg-nova-cyan/10 hover:border-nova-cyan hover:text-nova-cyan hover:scale-110">𝕏</a>
+          <a href="#" class="w-9 h-9 rounded-md bg-nova-card border border-white/[0.06] flex items-center justify-center text-sm text-[#6b7280] transition-all duration-350 hover:bg-nova-cyan/10 hover:border-nova-cyan hover:text-nova-cyan hover:scale-110">GH</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold text-[#e8eaed] uppercase tracking-wider mb-5">产品</h4>
+        <div class="flex flex-col gap-2.5">
+          <a href="/features/data-fusion.html" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">数据融合引擎</a>
+          <a href="/features/model-platform.html" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">大模型推理平台</a>
+          <a href="/features/knowledge-graph.html" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">行业知识图谱</a>
+          <a href="/features/decision-engine.html" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">智能决策中枢</a>
+          <a href="/features/automation.html" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">业务流程自动化</a>
+          <a href="/features/ai-ops.html" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">AI运维监控台</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold text-[#e8eaed] uppercase tracking-wider mb-5">行业</h4>
+        <div class="flex flex-col gap-2.5">
+          <a href="/solutions/fintech.html" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">金融服务</a>
+          <a href="/solutions/healthcare.html" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">医疗健康</a>
+          <a href="/solutions/manufacturing.html" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">智能制造</a>
+          <a href="/solutions/retail.html" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">零售供应链</a>
+          <a href="#" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">能源与公用</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold text-[#e8eaed] uppercase tracking-wider mb-5">关于</h4>
+        <div class="flex flex-col gap-2.5">
+          <a href="/company/about.html" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">公司简介</a>
+          <a href="/company/about.html" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">技术团队</a>
+          <a href="/company/contact.html" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">加入我们</a>
+          <a href="mailto:wujiashuaiwu492@gmail.com" class="text-sm text-nova-cyan transition-all duration-350 hover:underline">联系合作</a>
+          <a href="#" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">隐私政策</a>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-3 pt-6 border-t border-white/[0.06] text-sm text-[#6b7280]">
+      <span>© 2026 NovaMind AI. All rights reserved.</span>
+      <span class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+        <a href="mailto:wujiashuaiwu492@gmail.com" class="text-nova-cyan hover:underline">wujiashuaiwu492@gmail.com</a>
+        <span class="hidden sm:inline">|</span>
+        <span>沪ICP备2024XXXXXXXX号</span>
+      </span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
