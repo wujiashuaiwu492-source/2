@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ===== SEO Meta ===== -->
+  <title>NovaMind AI - 企业级AI智能解决方案 | 商业决策智能化平台</title>
+  <meta name="description" content="NovaMind AI 企业级人工智能解决方案，提供大模型私有化部署、智能风控、医疗影像AI诊断、工业视觉质检、供应链优化等一站式AI服务，助力企业实现商业决策智能化升级。" />
+  <meta name="keywords" content="AI解决方案,企业人工智能,大模型部署,智能风控,知识图谱,机器学习,商业智能,NovaMind" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="NovaMind AI" />
+  <meta name="theme-color" content="#0e1015" />
+  <link rel="canonical" href="https://novamind-ai.com" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="NovaMind AI - 企业级AI智能解决方案" />
+  <meta property="og:description" content="将深度学习、知识图谱与行业know-how深度融合，助力企业实现从数据洞察到智能决策的完整闭环。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://novamind-ai.com" />
+  <meta property="og:locale" content="zh_CN" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NovaMind AI - 企业级AI智能解决方案" />
+  <meta name="twitter:description" content="企业级人工智能解决方案，助力企业实现商业决策智能化升级。" />
+
+  <!-- ===== Tailwind CSS v3 CDN ===== -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            nova: {
+              deep:  '#0e1015',
+              dark:  '#161920',
+              card:  '#1c2029',
+              hover: '#222733',
+              elev:  '#282d3a',
+              cyan:  '#00d4aa',
+              blue:  '#4a9eff',
+              muted: '#6b7280',
+            },
+          },
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'sans-serif'],
+          },
+          animation: {
+            'spin-slow':  'spin 30s linear infinite',
+            'spin-rev':   'spin 24s linear infinite reverse',
+            'spin-fast':  'spin 18s linear infinite',
+            'pulse-dot':  'pulse-dot 2s infinite',
+            'fade-in-up': 'fadeInUp 0.7s ease forwards',
+            'bounce-in':  'bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+          },
+          keyframes: {
+            'pulse-dot': { '0%, 100%': { opacity: '1' }, '50%': { opacity: '0.3' } },
+            'fadeInUp':  { '0%': { opacity: '0', transform: 'translateY(40px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+            'bounceIn':  { '0%': { opacity: '0', transform: 'scale(0.9)' }, '100%': { opacity: '1', transform: 'scale(1)' } },
+          },
+        },
+      },
+    }
+  </script>
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{background:#0e1015;color:#c8ccd4;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    a{text-decoration:none;color:inherit}
+    ul{list-style:none}
+
+    #hero-canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+
+    /* Nav underline */
+    .nav-link::after{content:'';position:absolute;bottom:2px;left:50%;transform:translateX(-50%) scaleX(0);width:60%;height:2px;background:#00d4aa;border-radius:1px;transition:transform 0.3s}
+    .nav-link:hover::after{transform:translateX(-50%) scaleX(1)}
+
+    /* Footer link underline */
+    .footer-link{position:relative}
+    .footer-link::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1px;background:#00d4aa;transition:width 0.3s}
+    .footer-link:hover::after{width:100%}
+
+    /* Hero rings */
+    .hero-ring{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,0.06)}
+    .hero-ring .dot{position:absolute;width:8px;height:8px;border-radius:50%;background:#00d4aa;box-shadow:0 0 12px rgba(0,212,170,0.15)}
+    .hero-ring:nth-child(1){width:100%;height:100%;animation:spin 30s linear infinite}
+    .hero-ring:nth-child(1) .dot{top:-4px;left:50%;transform:translateX(-50%)}
+    .hero-ring:nth-child(2){width:75%;height:75%;animation:spin 24s linear infinite reverse}
+    .hero-ring:nth-child(2) .dot{top:50%;right:-4px;transform:translateY(-50%);background:#4a9eff;box-shadow:0 0 12px rgba(74,158,255,0.3)}
+    .hero-ring:nth-child(3){width:50%;height:50%;animation:spin 18s linear infinite}
+    .hero-ring:nth-child(3) .dot{bottom:-4px;left:50%;transform:translateX(-50%)}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* Feature card top line */
+    .feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#00d4aa,transparent);opacity:0;transition:opacity 0.35s}
+    .feature-card:hover::before{opacity:1}
+
+    /* Solution card overlay */
+    .solution-card .card-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,#1c2029 100%)}
+
+    /* Carousel */
+    .cases-track{display:flex;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);gap:1.5rem}
+    .case-card{min-width:calc(33.333% - 1rem);flex-shrink:0}
+    @media(max-width:1024px){.case-card{min-width:calc(50% - 0.75rem)}}
+    @media(max-width:768px){.case-card{min-width:calc(100% - 0rem)}}
+
+    /* Solutions carousel */
+    .sols-track{display:flex;transition:transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);gap:1.5rem}
+    .sol-card-item{min-width:calc(50% - 0.75rem);flex-shrink:0}
+    @media(max-width:768px){.sol-card-item{min-width:calc(100% - 0rem)}}
+
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(40px);transition:opacity 0.7s ease,transform 0.7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+
+    /* Tech bar */
+    .tech-bar{height:3px;border-radius:2px;background:#282d3a;overflow:hidden}
+    .tech-bar span{display:block;height:100%;border-radius:2px;background:linear-gradient(90deg,#00d4aa,#4a9eff);width:0;transition:width 1.2s cubic-bezier(0.25,0.46,0.45,0.94)}
+
+    /* Typewriter cursor */
+    .type-cursor{display:inline-block;width:2px;height:1em;background:#00d4aa;margin-left:2px;vertical-align:text-bottom;animation:blink 0.8s step-end infinite}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+    /* Modal */
+    .modal-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:1rem;opacity:0;pointer-events:none;transition:opacity 0.35s}
+    .modal-overlay.open{opacity:1;pointer-events:all}
+    .modal-panel{background:#1c2029;border:1px solid rgba(255,255,255,0.08);border-radius:16px;max-width:720px;width:100%;max-height:85vh;overflow-y:auto;padding:0;position:relative;transform:scale(0.92);transition:transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275)}
+    .modal-overlay.open .modal-panel{transform:scale(1)}
+    .modal-close{position:absolute;top:1rem;right:1rem;width:36px;height:36px;border-radius:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);color:#9ca3af;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1.2rem;transition:all 0.3s;z-index:10}
+    .modal-close:hover{background:rgba(255,255,255,0.1);color:#e8eaed;border-color:rgba(255,255,255,0.15)}
+
+    /* Toast */
+    .toast{position:fixed;top:2rem;left:50%;transform:translateX(-50%) translateY(-120px);z-index:99999;background:#00d4aa;color:#0e1015;padding:0.75rem 1.5rem;border-radius:8px;font-weight:600;font-size:0.9rem;box-shadow:0 8px 32px rgba(0,212,170,0.3);transition:transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);pointer-events:none}
+    .toast.show{transform:translateX(-50%) translateY(0)}
+    .toast.error{background:#ef4444;box-shadow:0 8px 32px rgba(239,68,68,0.3)}
+
+    /* Scrollbar */
+    ::selection{background:rgba(0,212,170,0.15);color:#00d4aa}
+    ::-webkit-scrollbar{width:6px}
+    ::-webkit-scrollbar-track{background:#0e1015}
+    ::-webkit-scrollbar-thumb{background:#282d3a;border-radius:3px}
+    ::-webkit-scrollbar-thumb:hover{background:#6b7280}
+  </style>
+</head>
+<body class="font-sans text-[#c8ccd4] bg-nova-deep antialiased">
+
+<!-- ==================== TOAST ==================== -->
+<div id="toast" class="toast"></div>
+
+<!-- ==================== MODAL: Booking ==================== -->
+<div id="bookingModal" class="modal-overlay">
+  <div class="modal-panel p-8 sm:p-10" style="max-width:600px">
+    <button class="modal-close" onclick="Nova.closeModal('bookingModal')">&times;</button>
+    <h3 class="text-xl font-semibold text-[#e8eaed] mb-1">预约产品演示</h3>
+    <p class="text-sm text-[#9ca3af] mb-6">我们的解决方案专家将在24小时内与您联系</p>
+    <form id="bookingForm" class="flex flex-col gap-4">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="flex flex-col gap-1.5"><label class="text-sm font-medium text-[#9ca3af]">姓名 *</label><input type="text" placeholder="请输入姓名" name="name" required class="bg-nova-dark border border-white/[0.06] rounded-md px-4 py-3 text-sm text-[#e8eaed] outline-none transition-all duration-350 placeholder:text-[#6b7280] focus:border-nova-cyan focus:shadow-[0_0_0_3px_rgba(0,212,170,0.15)]" /></div>
+        <div class="flex flex-col gap-1.5"><label class="text-sm font-medium text-[#9ca3af]">企业名称 *</label><input type="text" placeholder="请输入企业名称" name="company" required class="bg-nova-dark border border-white/[0.06] rounded-md px-4 py-3 text-sm text-[#e8eaed] outline-none transition-all duration-350 placeholder:text-[#6b7280] focus:border-nova-cyan focus:shadow-[0_0_0_3px_rgba(0,212,170,0.15)]" /></div>
+      </div>
+      <div class="flex flex-col gap-1.5"><label class="text-sm font-medium text-[#9ca3af]">联系邮箱 *</label><input type="email" placeholder="you@company.com" name="email" required class="bg-nova-dark border border-white/[0.06] rounded-md px-4 py-3 text-sm text-[#e8eaed] outline-none transition-all duration-350 placeholder:text-[#6b7280] focus:border-nova-cyan focus:shadow-[0_0_0_3px_rgba(0,212,170,0.15)]" /></div>
+      <div class="flex flex-col gap-1.5"><label class="text-sm font-medium text-[#9ca3af]">预约时间</label>
+        <div class="grid grid-cols-2 gap-3">
+          <input type="date" name="date" class="bg-nova-dark border border-white/[0.06] rounded-md px-4 py-3 text-sm text-[#e8eaed] outline-none transition-all duration-350 focus:border-nova-cyan focus:shadow-[0_0_0_3px_rgba(0,212,170,0.15)]" />
+          <select name="time" class="bg-nova-dark border border-white/[0.06] rounded-md px-4 py-3 text-sm text-[#e8eaed] outline-none transition-all duration-350 focus:border-nova-cyan focus:shadow-[0_0_0_3px_rgba(0,212,170,0.15)]">
+            <option value="">请选择时段</option><option>09:00 - 10:00</option><option>10:00 - 11:00</option><option>11:00 - 12:00</option><option>14:00 - 15:00</option><option>15:00 - 16:00</option><option>16:00 - 17:00</option>
+          </select>
+        </div>
+      </div>
+      <button type="submit" id="bookingBtn" class="w-full inline-flex items-center justify-center gap-2 bg-nova-cyan text-nova-deep font-semibold px-8 py-3 rounded-md text-[0.95rem] transition-all duration-350 hover:bg-[#00e8bc] hover:shadow-[0_0_32px_rgba(0,212,170,0.15)]">提交预约 →</button>
+    </form>
+  </div>
+</div>
+
+<!-- ==================== MODAL: Feature Detail ==================== -->
+<div id="featureModal" class="modal-overlay">
+  <div class="modal-panel">
+    <button class="modal-close" onclick="Nova.closeModal('featureModal')">&times;</button>
+    <div class="p-8 sm:p-10" id="featureModalContent"></div>
+  </div>
+</div>
+
+<!-- ==================== MODAL: Solution Detail ==================== -->
+<div id="solutionModal" class="modal-overlay">
+  <div class="modal-panel" style="max-width:760px">
+    <button class="modal-close" onclick="Nova.closeModal('solutionModal')">&times;</button>
+    <div class="p-8 sm:p-10" id="solutionModalContent"></div>
+    <div class="flex justify-between items-center px-8 pb-8">
+      <button id="solPrev" class="w-10 h-10 rounded-full border border-white/[0.06] bg-nova-dark text-[#9ca3af] flex items-center justify-center cursor-pointer transition-all duration-350 hover:border-nova-cyan hover:text-nova-cyan text-lg">‹</button>
+      <span class="text-sm text-[#6b7280]" id="solIndicator">1 / 4</span>
+      <button id="solNext" class="w-10 h-10 rounded-full border border-white/[0.06] bg-nova-dark text-[#9ca3af] flex items-center justify-center cursor-pointer transition-all duration-350 hover:border-nova-cyan hover:text-nova-cyan text-lg">›</button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== NAVBAR ==================== -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-4 sm:px-8 bg-nova-deep/85 backdrop-blur-xl border-b border-white/[0.06] transition-all duration-500">
+  <div class="max-w-[1280px] mx-auto flex items-center justify-between h-16 px-0">
+    <a href="#hero" class="text-lg font-bold text-[#e8eaed] flex items-center gap-2">Nova<span class="text-nova-cyan">Mind</span></a>
+    <!-- Desktop Links -->
+    <div class="hidden md:flex items-center gap-1" id="desktopNav">
+      <a href="#hero" class="nav-link px-3 py-2 text-sm font-medium text-[#9ca3af] hover:text-[#e8eaed] rounded-md transition-all duration-350 relative">首页</a>
+      <a href="#solutions" class="nav-link px-3 py-2 text-sm font-medium text-[#9ca3af] hover:text-[#e8eaed] rounded-md transition-all duration-350 relative">解决方案</a>
+      <a href="#features" class="nav-link px-3 py-2 text-sm font-medium text-[#9ca3af] hover:text-[#e8eaed] rounded-md transition-all duration-350 relative">产品功能</a>
+      <a href="#cases" class="nav-link px-3 py-2 text-sm font-medium text-[#9ca3af] hover:text-[#e8eaed] rounded-md transition-all duration-350 relative">案例展示</a>
+      <a href="#tech" class="nav-link px-3 py-2 text-sm font-medium text-[#9ca3af] hover:text-[#e8eaed] rounded-md transition-all duration-350 relative">技术优势</a>
+      <a href="#contact" class="nav-cta ml-3 px-4 py-2 text-sm font-semibold text-nova-deep bg-nova-cyan hover:bg-[#00e8bc] hover:shadow-[0_0_24px_rgba(0,212,170,0.15)] rounded-md transition-all duration-350 hover:-translate-y-0.5">合作咨询</a>
+    </div>
+    <!-- Mobile Hamburger -->
+    <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-2 cursor-pointer z-50 relative" aria-label="菜单">
+      <span class="block w-6 h-0.5 bg-[#9ca3af] rounded transition-all duration-300 origin-center"></span>
+      <span class="block w-6 h-0.5 bg-[#9ca3af] rounded transition-all duration-300 origin-center"></span>
+      <span class="block w-6 h-0.5 bg-[#9ca3af] rounded transition-all duration-300 origin-center"></span>
+    </button>
+  </div>
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="md:hidden overflow-hidden" style="max-height:0;transition:max-height 0.4s ease">
+    <div class="flex flex-col gap-1 pb-4 px-2">
+      <a href="#hero" class="nav-link block px-4 py-3 text-sm font-medium text-[#9ca3af] hover:text-[#e8eaed] hover:bg-white/[0.03] rounded-md transition-all duration-350 relative">首页</a>
+      <a href="#solutions" class="nav-link block px-4 py-3 text-sm font-medium text-[#9ca3af] hover:text-[#e8eaed] hover:bg-white/[0.03] rounded-md transition-all duration-350 relative">解决方案</a>
+      <a href="#features" class="nav-link block px-4 py-3 text-sm font-medium text-[#9ca3af] hover:text-[#e8eaed] hover:bg-white/[0.03] rounded-md transition-all duration-350 relative">产品功能</a>
+      <a href="#cases" class="nav-link block px-4 py-3 text-sm font-medium text-[#9ca3af] hover:text-[#e8eaed] hover:bg-white/[0.03] rounded-md transition-all duration-350 relative">案例展示</a>
+      <a href="#tech" class="nav-link block px-4 py-3 text-sm font-medium text-[#9ca3af] hover:text-[#e8eaed] hover:bg-white/[0.03] rounded-md transition-all duration-350 relative">技术优势</a>
+      <a href="#contact" class="block ml-2 mr-2 mt-1 px-4 py-3 text-sm font-semibold text-nova-deep bg-nova-cyan hover:bg-[#00e8bc] rounded-md transition-all duration-350 text-center">合作咨询</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<section id="hero" class="relative min-h-screen flex items-center overflow-hidden bg-nova-deep pt-16">
+  <canvas id="hero-canvas"></canvas>
+  <div class="absolute inset-0 pointer-events-none"
+       style="background:radial-gradient(ellipse 60% 50% at 30% 50%,rgba(0,212,170,0.06),transparent),
+                     radial-gradient(ellipse 40% 40% at 80% 30%,rgba(74,158,255,0.05),transparent),
+                     radial-gradient(ellipse 50% 60% at 50% 100%,rgba(0,212,170,0.03),transparent)"></div>
+  <div class="relative z-10 w-full max-w-[1280px] mx-auto px-4 sm:px-8 grid lg:grid-cols-2 gap-8 lg:gap-16 items-center pt-4 lg:pt-8">
+    <div>
+      <div class="inline-flex items-center gap-2 bg-nova-cyan/10 border border-nova-cyan/20 px-3 py-1.5 rounded-full text-sm font-medium text-nova-cyan mb-8">
+        <span class="w-1.5 h-1.5 rounded-full bg-nova-cyan animate-pulse-dot"></span>
+        新一代企业智能平台
+      </div>
+      <h1 class="text-[clamp(2.5rem,5vw,4rem)] font-semibold text-[#e8eaed] leading-tight tracking-tight mb-4">
+        以 AI 驱动<br>
+        <span class="bg-gradient-to-r from-nova-cyan to-nova-blue bg-clip-text text-transparent" id="typewriterTarget">商业决策智能化</span><span class="type-cursor" id="typeCursor"></span>
+      </h1>
+      <p class="text-lg text-[#9ca3af] max-w-[520px] mb-10">NovaMind 企业级人工智能解决方案，将深度学习、知识图谱与行业know-how深度融合，助力企业实现从数据洞察到智能决策的完整闭环。</p>
+      <div class="flex flex-wrap gap-4">
+        <button onclick="Nova.openBooking()" class="inline-flex items-center gap-2 bg-nova-cyan text-nova-deep font-semibold px-8 py-3 rounded-md text-[0.95rem] transition-all duration-350 hover:bg-[#00e8bc] hover:shadow-[0_0_32px_rgba(0,212,170,0.15)] hover:-translate-y-0.5 cursor-pointer border-none">预约演示 →</button>
+        <a href="#features" class="inline-flex items-center gap-2 bg-transparent text-[#e8eaed] font-medium px-8 py-3 rounded-md text-[0.95rem] border border-white/[0.12] transition-all duration-350 hover:bg-nova-card hover:border-nova-cyan hover:shadow-[0_0_12px_rgba(0,212,170,0.1)]">了解更多</a>
+      </div>
+      <!-- Stats -->
+      <div class="grid grid-cols-3 gap-4 sm:gap-6 mt-12 pt-8 border-t border-white/[0.06]">
+        <div class="stat-card p-2 sm:p-3 -mx-2 rounded-lg transition-all duration-350 cursor-default hover:bg-white/[0.02] hover:border-white/[0.08] hover:-translate-y-1 border border-transparent">
+          <span class="stat-num block text-xl sm:text-2xl font-bold text-[#e8eaed] transition-all duration-350" data-target="500">0</span>
+          <span class="text-xs sm:text-sm text-[#6b7280] mt-0.5 block">服务企业数</span>
+          <div class="stat-progress mt-2 h-1 rounded-full bg-[#282d3a] overflow-hidden"><span class="block h-full rounded-full bg-gradient-to-r from-nova-cyan to-nova-blue w-0 transition-all duration-1200"></span></div>
+        </div>
+        <div class="stat-card p-2 sm:p-3 -mx-2 rounded-lg transition-all duration-350 cursor-default hover:bg-white/[0.02] hover:border-white/[0.08] hover:-translate-y-1 border border-transparent">
+          <span class="stat-num block text-xl sm:text-2xl font-bold text-[#e8eaed] transition-all duration-350" data-target="97">0</span>
+          <span class="text-xs sm:text-sm text-[#6b7280] mt-0.5 block">客户续约率 %</span>
+          <div class="stat-progress mt-2 h-1 rounded-full bg-[#282d3a] overflow-hidden"><span class="block h-full rounded-full bg-gradient-to-r from-nova-cyan to-nova-blue w-0 transition-all duration-1200"></span></div>
+        </div>
+        <div class="stat-card p-2 sm:p-3 -mx-2 rounded-lg transition-all duration-350 cursor-default hover:bg-white/[0.02] hover:border-white/[0.08] hover:-translate-y-1 border border-transparent">
+          <span class="stat-num plus block text-xl sm:text-2xl font-bold text-[#e8eaed] transition-all duration-350" data-target="300">0</span>
+          <span class="text-xs sm:text-sm text-[#6b7280] mt-0.5 block">专利技术数</span>
+          <div class="stat-progress mt-2 h-1 rounded-full bg-[#282d3a] overflow-hidden"><span class="block h-full rounded-full bg-gradient-to-r from-nova-cyan to-nova-blue w-0 transition-all duration-1200"></span></div>
+        </div>
+      </div>
+    </div>
+    <!-- Hero Visual -->
+    <div class="hidden lg:flex items-center justify-center min-h-[400px]">
+      <div class="w-full max-w-[480px] aspect-square relative flex items-center justify-center" id="heroRings">
+        <div class="hero-ring"><span class="dot"></span></div>
+        <div class="hero-ring"><span class="dot"></span></div>
+        <div class="hero-ring"><span class="dot"></span></div>
+        <div class="w-20 h-20 rounded-full flex items-center justify-center text-3xl z-10 backdrop-blur-sm"
+             style="background:radial-gradient(circle at 30% 30%,rgba(0,212,170,0.2),rgba(0,212,170,0.05));border:1px solid rgba(0,212,170,0.2)">✦</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FEATURES ==================== -->
+<section id="features" class="py-16 sm:py-24 bg-nova-dark">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-8">
+    <div class="text-center max-w-[680px] mx-auto mb-12 sm:mb-16 reveal">
+      <span class="inline-block text-xs font-semibold tracking-widest uppercase text-nova-cyan mb-4">核心功能</span>
+      <h2 class="text-[clamp(1.75rem,3.5vw,2.5rem)] font-semibold text-[#e8eaed] leading-tight tracking-tight mb-3">全栈智能 · 赋能业务增长</h2>
+      <p class="text-lg text-[#9ca3af]">六大核心模块覆盖AI应用全生命周期，从数据处理到决策输出，为企业提供一站式智能升级方案。</p>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6" id="featuresGrid"></div>
+  </div>
+</section>
+
+<!-- ==================== SOLUTIONS (with carousel) ==================== -->
+<section id="solutions" class="py-16 sm:py-24 bg-nova-deep">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-8">
+    <div class="text-center max-w-[680px] mx-auto mb-12 sm:mb-16 reveal">
+      <span class="inline-block text-xs font-semibold tracking-widest uppercase text-nova-cyan mb-4">行业解决方案</span>
+      <h2 class="text-[clamp(1.75rem,3.5vw,2.5rem)] font-semibold text-[#e8eaed] leading-tight tracking-tight mb-3">深耕行业 · 定制化智能落地</h2>
+      <p class="text-lg text-[#9ca3af]">针对不同行业核心痛点的AI解决方案，已在金融、医疗、制造、零售等领域落地验证。</p>
+    </div>
+    <!-- Solutions Carousel -->
+    <div class="relative overflow-hidden -mx-3" id="solsCarousel">
+      <div class="sols-track" id="solsTrack"></div>
+    </div>
+    <div class="flex justify-center items-center gap-3 mt-10">
+      <button id="solsPrev" class="w-10 h-10 rounded-full border border-white/[0.06] bg-nova-card text-[#9ca3af] flex items-center justify-center cursor-pointer transition-all duration-350 hover:bg-nova-hover hover:border-nova-cyan hover:text-nova-cyan text-lg">‹</button>
+      <div class="flex items-center gap-1.5" id="solsDots"></div>
+      <button id="solsNext" class="w-10 h-10 rounded-full border border-white/[0.06] bg-nova-card text-[#9ca3af] flex items-center justify-center cursor-pointer transition-all duration-350 hover:bg-nova-hover hover:border-nova-cyan hover:text-nova-cyan text-lg">›</button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CASES ==================== -->
+<section id="cases" class="py-16 sm:py-24 bg-nova-dark overflow-hidden">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-8">
+    <div class="text-center max-w-[680px] mx-auto mb-12 sm:mb-16 reveal">
+      <span class="inline-block text-xs font-semibold tracking-widest uppercase text-nova-cyan mb-4">客户案例</span>
+      <h2 class="text-[clamp(1.75rem,3.5vw,2.5rem)] font-semibold text-[#e8eaed] leading-tight tracking-tight mb-3">行业标杆 · 实效见证</h2>
+      <p class="text-lg text-[#9ca3af]">来自各行业领先企业的真实反馈，见证NovaMind AI带来的业务价值跃升。</p>
+    </div>
+    <div class="relative overflow-hidden -mx-3" id="casesCarousel">
+      <div class="cases-track" id="casesTrack"></div>
+    </div>
+    <div class="flex justify-center items-center gap-3 mt-10">
+      <button id="carouselPrev" class="w-10 h-10 rounded-full border border-white/[0.06] bg-nova-card text-[#9ca3af] flex items-center justify-center cursor-pointer transition-all duration-350 hover:bg-nova-hover hover:border-nova-cyan hover:text-nova-cyan text-lg">‹</button>
+      <div class="flex items-center gap-1.5" id="carouselDots"></div>
+      <button id="carouselNext" class="w-10 h-10 rounded-full border border-white/[0.06] bg-nova-card text-[#9ca3af] flex items-center justify-center cursor-pointer transition-all duration-350 hover:bg-nova-hover hover:border-nova-cyan hover:text-nova-cyan text-lg">›</button>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== TECH ==================== -->
+<section id="tech" class="py-16 sm:py-24 bg-nova-deep">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-8">
+    <div class="text-center max-w-[680px] mx-auto mb-12 sm:mb-16 reveal">
+      <span class="inline-block text-xs font-semibold tracking-widest uppercase text-nova-cyan mb-4">技术优势</span>
+      <h2 class="text-[clamp(1.75rem,3.5vw,2.5rem)] font-semibold text-[#e8eaed] leading-tight tracking-tight mb-3">硬核技术 · 构筑竞争壁垒</h2>
+      <p class="text-lg text-[#9ca3af]">十年技术积累，多项核心专利，打造企业级AI基础设施的绝对优势。</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6" id="techGrid"></div>
+  </div>
+</section>
+
+<!-- ==================== CONTACT ==================== -->
+<section id="contact" class="py-16 sm:py-24 bg-nova-dark">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-8">
+    <div class="text-center max-w-[680px] mx-auto mb-12 sm:mb-16 reveal">
+      <span class="inline-block text-xs font-semibold tracking-widest uppercase text-nova-cyan mb-4">合作咨询</span>
+      <h2 class="text-[clamp(1.75rem,3.5vw,2.5rem)] font-semibold text-[#e8eaed] leading-tight tracking-tight mb-3">开启企业智能升级之旅</h2>
+      <p class="text-lg text-[#9ca3af]">填写下方表单，我们的解决方案专家将在24小时内与您联系，为您定制专属AI落地策略。</p>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+      <div class="reveal">
+        <p class="text-[0.95rem] text-[#9ca3af] leading-relaxed">无论您是正在探索AI落地的可能性，还是已有明确的应用场景，NovaMind技术团队都将为您提供专业的咨询与支持。欢迎通过以下方式与我们取得联系。</p>
+        <div class="flex flex-col gap-5 mt-8">
+          <div class="flex items-center gap-4 text-[#9ca3af] group">
+            <div class="w-10 h-10 rounded-md bg-nova-cyan/10 flex items-center justify-center text-nova-cyan shrink-0">@</div>
+            <div class="flex-1 min-w-0">
+              <span class="block text-sm font-medium text-[#e8eaed]">业务合作邮箱</span>
+              <div class="flex items-center gap-2">
+                <a href="mailto:wujiashuaiwu492@gmail.com" class="text-nova-cyan hover:underline text-sm truncate">wujiashuaiwu492@gmail.com</a>
+                <button data-copy="wujiashuaiwu492@gmail.com" class="copy-btn w-6 h-6 rounded bg-white/[0.04] hover:bg-nova-cyan/20 flex items-center justify-center text-xs text-[#6b7280] hover:text-nova-cyan transition-all duration-300 shrink-0" title="复制邮箱">📋</button>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 text-[#9ca3af]">
+            <div class="w-10 h-10 rounded-md bg-nova-cyan/10 flex items-center justify-center text-nova-cyan shrink-0">◉</div>
+            <div class="flex-1 min-w-0">
+              <span class="block text-sm font-medium text-[#e8eaed]">咨询热线</span>
+              <div class="flex items-center gap-2">
+                <span class="text-sm">400-8820-NOVA</span>
+                <button data-copy="400-8820-NOVA" class="copy-btn w-6 h-6 rounded bg-white/[0.04] hover:bg-nova-cyan/20 flex items-center justify-center text-xs text-[#6b7280] hover:text-nova-cyan transition-all duration-300 shrink-0" title="复制电话">📋</button>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 text-[#9ca3af]">
+            <div class="w-10 h-10 rounded-md bg-nova-cyan/10 flex items-center justify-center text-nova-cyan shrink-0">⌂</div>
+            <div><span class="block text-sm font-medium text-[#e8eaed]">公司地址</span><span class="text-sm">上海市浦东新区张江人工智能岛</span></div>
+          </div>
+        </div>
+      </div>
+      <form id="contactForm" class="bg-nova-card border border-white/[0.06] rounded-xl p-6 sm:p-10 flex flex-col gap-5 reveal reveal-delay-2">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="flex flex-col gap-1.5"><label class="text-sm font-medium text-[#9ca3af]">姓名 <span class="text-red-400">*</span></label><input type="text" placeholder="请输入姓名" name="name" required class="bg-nova-dark border border-white/[0.06] rounded-md px-4 py-3 text-sm text-[#e8eaed] outline-none transition-all duration-350 placeholder:text-[#6b7280] focus:border-nova-cyan focus:shadow-[0_0_0_3px_rgba(0,212,170,0.15)]" /></div>
+          <div class="flex flex-col gap-1.5"><label class="text-sm font-medium text-[#9ca3af]">职位</label><input type="text" placeholder="请输入职位" name="title" class="bg-nova-dark border border-white/[0.06] rounded-md px-4 py-3 text-sm text-[#e8eaed] outline-none transition-all duration-350 placeholder:text-[#6b7280] focus:border-nova-cyan focus:shadow-[0_0_0_3px_rgba(0,212,170,0.15)]" /></div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="flex flex-col gap-1.5"><label class="text-sm font-medium text-[#9ca3af]">企业邮箱 <span class="text-red-400">*</span></label><input type="email" placeholder="you@company.com" name="email" required class="bg-nova-dark border border-white/[0.06] rounded-md px-4 py-3 text-sm text-[#e8eaed] outline-none transition-all duration-350 placeholder:text-[#6b7280] focus:border-nova-cyan focus:shadow-[0_0_0_3px_rgba(0,212,170,0.15)]" /></div>
+          <div class="flex flex-col gap-1.5"><label class="text-sm font-medium text-[#9ca3af]">公司名称</label><input type="text" placeholder="请输入公司名称" name="company" class="bg-nova-dark border border-white/[0.06] rounded-md px-4 py-3 text-sm text-[#e8eaed] outline-none transition-all duration-350 placeholder:text-[#6b7280] focus:border-nova-cyan focus:shadow-[0_0_0_3px_rgba(0,212,170,0.15)]" /></div>
+        </div>
+        <div class="flex flex-col gap-1.5"><label class="text-sm font-medium text-[#9ca3af]">感兴趣的方向</label>
+          <select name="interest" class="bg-nova-dark border border-white/[0.06] rounded-md px-4 py-3 text-sm text-[#e8eaed] outline-none transition-all duration-350 focus:border-nova-cyan focus:shadow-[0_0_0_3px_rgba(0,212,170,0.15)]">
+            <option value="">请选择</option><option>大模型私有化部署</option><option>智能风控解决方案</option><option>医疗影像AI诊断</option><option>工业视觉质检</option><option>供应链智能优化</option><option>其他行业方案</option>
+          </select>
+        </div>
+        <div class="flex flex-col gap-1.5"><label class="text-sm font-medium text-[#9ca3af]">需求描述</label><textarea placeholder="请简要描述您的业务场景与需求……" name="message" class="bg-nova-dark border border-white/[0.06] rounded-md px-4 py-3 text-sm text-[#e8eaed] outline-none transition-all duration-350 placeholder:text-[#6b7280] focus:border-nova-cyan focus:shadow-[0_0_0_3px_rgba(0,212,170,0.15)] resize-vertical min-h-[100px]"></textarea></div>
+        <div class="flex gap-3">
+          <button type="submit" id="contactBtn" class="flex-1 inline-flex items-center justify-center gap-2 bg-nova-cyan text-nova-deep font-semibold px-8 py-3 rounded-md text-[0.95rem] transition-all duration-350 hover:bg-[#00e8bc] hover:shadow-[0_0_32px_rgba(0,212,170,0.15)]">
+            <span id="contactBtnText">提交咨询 →</span>
+            <span id="contactBtnSpinner" class="hidden w-4 h-4 border-2 border-nova-deep border-t-transparent rounded-full animate-spin"></span>
+          </button>
+          <button type="reset" class="px-6 py-3 text-sm font-medium text-[#9ca3af] bg-transparent border border-white/[0.08] rounded-md transition-all duration-350 hover:bg-white/[0.03] hover:text-[#e8eaed] hover:border-white/[0.15]">重置</button>
+        </div>
+        <p id="contactError" class="text-red-400 text-sm hidden"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== FOOTER ==================== -->
+<footer class="bg-nova-deep border-t border-white/[0.06] pt-16 pb-8">
+  <div class="max-w-[1280px] mx-auto px-4 sm:px-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12 mb-12">
+      <div class="sm:col-span-2 lg:col-span-1">
+        <div class="text-xl font-bold text-[#e8eaed] mb-4">Nova<span class="text-nova-cyan">Mind</span></div>
+        <p class="text-sm text-[#6b7280] max-w-xs leading-relaxed mb-6">企业级人工智能解决方案提供商，致力于通过前沿AI技术赋能千行百业实现智能化升级。</p>
+        <div class="flex gap-3">
+          <a href="mailto:wujiashuaiwu492@gmail.com" class="w-9 h-9 rounded-md bg-nova-card border border-white/[0.06] flex items-center justify-center text-sm text-[#6b7280] transition-all duration-350 hover:bg-nova-cyan/10 hover:border-nova-cyan hover:text-nova-cyan hover:scale-110">✉</a>
+          <a href="#" class="w-9 h-9 rounded-md bg-nova-card border border-white/[0.06] flex items-center justify-center text-sm text-[#6b7280] transition-all duration-350 hover:bg-nova-cyan/10 hover:border-nova-cyan hover:text-nova-cyan hover:scale-110">in</a>
+          <a href="#" class="w-9 h-9 rounded-md bg-nova-card border border-white/[0.06] flex items-center justify-center text-sm text-[#6b7280] transition-all duration-350 hover:bg-nova-cyan/10 hover:border-nova-cyan hover:text-nova-cyan hover:scale-110">𝕏</a>
+          <a href="#" class="w-9 h-9 rounded-md bg-nova-card border border-white/[0.06] flex items-center justify-center text-sm text-[#6b7280] transition-all duration-350 hover:bg-nova-cyan/10 hover:border-nova-cyan hover:text-nova-cyan hover:scale-110">GH</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold text-[#e8eaed] uppercase tracking-wider mb-5">产品</h4>
+        <div class="flex flex-col gap-2.5">
+          <a href="#features" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">数据融合引擎</a>
+          <a href="#features" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">大模型推理平台</a>
+          <a href="#features" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">知识图谱构建</a>
+          <a href="#features" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">智能决策系统</a>
+          <a href="#features" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">AI运维监控</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold text-[#e8eaed] uppercase tracking-wider mb-5">行业</h4>
+        <div class="flex flex-col gap-2.5">
+          <a href="#solutions" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">金融服务</a>
+          <a href="#solutions" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">医疗健康</a>
+          <a href="#solutions" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">智能制造</a>
+          <a href="#solutions" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">零售供应链</a>
+          <a href="#solutions" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">能源与公用</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold text-[#e8eaed] uppercase tracking-wider mb-5">关于</h4>
+        <div class="flex flex-col gap-2.5">
+          <a href="#hero" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">公司简介</a>
+          <a href="#tech" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">技术团队</a>
+          <a href="#contact" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">加入我们</a>
+          <a href="mailto:wujiashuaiwu492@gmail.com" class="text-sm text-nova-cyan transition-all duration-350 hover:underline">联系合作</a>
+          <a href="#" class="footer-link text-sm text-[#6b7280] transition-all duration-350 hover:text-nova-cyan">隐私政策</a>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-3 pt-6 border-t border-white/[0.06] text-sm text-[#6b7280]">
+      <span>© 2026 NovaMind AI. All rights reserved.</span>
+      <span class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
+        <a href="mailto:wujiashuaiwu492@gmail.com" class="text-nova-cyan hover:underline">wujiashuaiwu492@gmail.com</a>
+        <span class="hidden sm:inline">|</span>
+        <span>沪ICP备2024XXXXXXXX号</span>
+      </span>
+    </div>
+  </div>
+</footer>
+
+<!-- ==================== THREE.JS ==================== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// ====================================================================
+//  NOVA — Global App Namespace
+// ====================================================================
+const Nova = (() => {
+
+// ── DATA ────────────────────────────────────────────────────────────
+const featureData = [
+  {
+    icon:'◈', tag:'数据智能', title:'多源数据融合引擎',
+    desc:'毫秒级接入结构化与非结构化数据，自动完成清洗、标注与特征工程。',
+    core:'一站式多源异构数据融合——让沉睡的数据资产即刻为AI所用。',
+    advantages:['毫秒级实时数据接入','支持500+数据源连接器','自动数据清洗与异常检测','智能特征工程与变量衍生','流批一体数据处理架构'],
+    scenarios:['金融风控数据中台','医疗多模态数据治理','工业IoT传感器融合','零售全渠道数据整合'],
+    cases:[{metric:'数据接入延迟＜10ms', detail:'某大型银行数据中台项目'},{metric:'数据治理效率提升8×', detail:'某三甲医院临床数据平台'}]
+  },
+  {
+    icon:'◇', tag:'模型服务', title:'大模型推理平台',
+    desc:'私有化部署LLM与多模态模型，端到端加密，确保企业数据安全合规。',
+    core:'企业级大模型私有化部署——安全、可控、高性能的AI推理基础设施。',
+    advantages:['支持主流开源&商用模型','端到端数据加密传输','动态GPU资源调度','模型版本管理与A/B测试','99.9%服务可用性SLA'],
+    scenarios:['金融合规文档智能审核','医疗病历智能摘要生成','工业设备故障知识问答','零售智能客服与导购'],
+    cases:[{metric:'推理延迟＜30ms', detail:'某头部券商智能研报系统'},{metric:'日均处理50亿+Token', detail:'某跨国零售集团客服平台'}]
+  },
+  {
+    icon:'○', tag:'知识管理', title:'行业知识图谱',
+    desc:'深度挖掘业务关联，构建领域专用知识图谱，让AI真正理解行业逻辑。',
+    core:'从数据到知识——构建机器可理解的行业专家系统。',
+    advantages:['领域本体自动构建','千万级实体关系推理','动态知识增量更新','多跳推理问答引擎','可视化图谱探索工具'],
+    scenarios:['金融产业链知识网络','医疗疾病-药物知识库','工业设备故障知识图谱','零售商品知识关联网络'],
+    cases:[{metric:'知识覆盖100万+实体', detail:'某大型保险集团知识中台'},{metric:'查询响应提速20×', detail:'某工业企业设备知识管理平台'}]
+  },
+  {
+    icon:'△', tag:'决策智能', title:'智能决策中枢',
+    desc:'基于强化学习与因果推断，提供可解释的决策建议与模拟推演能力。',
+    core:'从洞察到行动——让每一个商业决策都有AI驱动的数据支撑。',
+    advantages:['因果推断与反事实分析','多目标优化决策引擎','可解释AI决策路径','策略模拟与沙盘推演','实时决策效果归因'],
+    scenarios:['金融信贷审批决策','供应链库存优化决策','产线排程优化决策','零售动态定价决策'],
+    cases:[{metric:'信贷审批效率提升6×', detail:'某商业银行智能风控决策系统'},{metric:'库存成本降低18%', detail:'某大型制造企业供应链优化'}]
+  },
+  {
+    icon:'▽', tag:'自动化', title:'业务流程自动化',
+    desc:'RPA+AI融合，自动化处理重复性业务流程，释放高价值人力资源。',
+    core:'让AI替你跑流程——端到端智能自动化，释放团队创造力。',
+    advantages:['AI+RPA深度融合','自然语言流程编排','智能异常处理与重试','跨系统无缝集成','流程效能实时看板'],
+    scenarios:['财务对账与报销自动化','人事入职与考勤自动化','IT运维工单自动化','合规审查流程自动化'],
+    cases:[{metric:'人工处理时间减少85%', detail:'某上市集团财务共享中心'},{metric:'年节约工时12万+小时', detail:'某金融机构合规审查部'}]
+  },
+  {
+    icon:'□', tag:'监控', title:'AI运维监控台',
+    desc:'全链路模型监控与漂移检测，保障生产环境AI服务持续稳定可靠。',
+    core:'AI也需要运维——全链路可观测，让每一次推理都在掌控之中。',
+    advantages:['模型性能实时监控','数据漂移自动检测','推理质量多维评估','异常告警与自愈机制','全链路调用链追踪'],
+    scenarios:['金融模型稳定性监控','医疗AI诊断质量监控','工业视觉模型漂移检测','推荐系统效果实时评估'],
+    cases:[{metric:'故障发现时间＜1分钟', detail:'某大型银行AI模型运维平台'},{metric:'模型可用性99.99%', detail:'某电商平台推荐系统监控'}]
+  }
+];
+
+const solutionData = [
+  {
+    icon:'₿', tag:'金融风控智能体', title:'金融风控智能体',
+    bg:'linear-gradient(135deg,rgba(0,212,170,0.08),rgba(0,212,170,0.02))',
+    short:'实时交易反欺诈、信用评估模型、智能合规审查，降低坏账率42%，提升审批效率6倍。',
+    painPoints:'金融行业面临交易欺诈频发、信用评估滞后、合规审查成本高企等核心痛点。传统规则引擎难以应对复杂多变的欺诈手段，人工审核效率低下，亟需AI驱动的智能风控体系。',
+    flow:['多维数据采集\n(交易/行为/设备)','实时特征工程\n(500+风险特征)','多模型集成推理\n(反欺诈+信用+合规)','智能决策输出\n(拦截/预警/放行)','效果归因与模型迭代\n(持续优化)'],
+    results:[{label:'坏账率',value:'降低42%'},{label:'审批效率',value:'提升6倍'},{label:'欺诈拦截率',value:'99.7%'}],
+    modules:['数据智能','模型服务','决策智能','自动化'],
+    tabs:['反欺诈','信用评分','智能合规']
+  },
+  {
+    icon:'⚕', tag:'医疗影像辅助诊断', title:'医疗影像辅助诊断',
+    bg:'linear-gradient(135deg,rgba(74,158,255,0.08),rgba(74,158,255,0.02))',
+    short:'基于深度学习的医学影像分析系统，覆盖CT、MRI、X光多模态，辅助诊断准确率98.7%。',
+    painPoints:'医疗影像诊断依赖资深医生经验，基层医院专业人才匮乏，诊断效率瓶颈突出。AI辅助可大幅缩短阅片时间，提高早期病变检出率，缓解医疗资源不均衡问题。',
+    flow:['DICOM影像接入\n(CT/MRI/X光)','影像预处理\n(降噪/增强/配准)','多模态AI推理\n(分割/检测/分类)','结构化报告生成\n(病灶标注+测量)','医生审核确认\n(人机协同)'],
+    results:[{label:'辅助诊断准确率',value:'98.7%'},{label:'阅片效率',value:'提升4倍'},{label:'早期病变检出率',value:'+35%'}],
+    modules:['数据智能','模型服务','知识管理','监控'],
+    tabs:['影像分析','辅助诊断','病理筛查']
+  },
+  {
+    icon:'⚙', tag:'工业质检视觉系统', title:'工业质检视觉系统',
+    bg:'linear-gradient(135deg,rgba(0,212,170,0.06),rgba(0,212,170,0.01))',
+    short:'边缘端部署的工业视觉AI，毫秒级缺陷检测，准确率超99.5%，降低人力检测成本70%。',
+    painPoints:'传统工业质检依赖人眼目检，效率低、一致性差、人力成本高昂。AI视觉系统可在毫秒级完成高精度缺陷检测，实现产线全自动化质量管控，大幅降低漏检和误检。',
+    flow:['工业相机采集\n(多角度/多光源)','边缘端预处理\n(图像增强/ROI提取)','缺陷检测模型推理\n(分类+分割+定位)','实时结果输出\n(OK/NG+缺陷类型)','质量数据汇聚与分析\n(SPC看板)'],
+    results:[{label:'检测准确率',value:'＞99.5%'},{label:'人力成本',value:'降低70%'},{label:'漏检率',value:'＜0.08%'}],
+    modules:['模型服务','自动化','监控','数据智能'],
+    tabs:['缺陷检测','边缘计算','实时监控']
+  },
+  {
+    icon:'🛒', tag:'零售智慧供应链', title:'零售智慧供应链',
+    bg:'linear-gradient(135deg,rgba(74,158,255,0.06),rgba(74,158,255,0.01))',
+    short:'需求预测+智能补货+动态定价一体化，库存周转率提升35%，缺货率下降52%。',
+    painPoints:'零售行业面临需求波动大、库存成本高、缺货与积压并存等供应链管理难题。AI驱动的预测与优化系统，可实现从需求感知到自动补货、动态定价的完整闭环。',
+    flow:['多源数据融合\n(销售/库存/天气/社交)','需求预测模型\n(时序+因果+ML)','智能补货引擎\n(安全库存+EOQ优化)','动态定价策略\n(竞争感知+弹性分析)','全链路效果监控\n(周转/缺货/毛利)'],
+    results:[{label:'库存周转率',value:'提升35%'},{label:'缺货率',value:'降低52%'},{label:'预测准确率',value:'92%'}],
+    modules:['数据智能','决策智能','自动化','模型服务'],
+    tabs:['需求预测','智能补货','动态定价']
+  }
+];
+
+const caseData = [
+  {quote:'NovaMind的智能风控系统上线以来，我们的欺诈损失下降了67%，模型响应速度从秒级提升到毫秒级，真正做到了实时拦截。',name:'陈明远',role:'风控总监 · 兴业金融',init:'陈',result:'↑ 欺诈损失降低 67%'},
+  {quote:'医疗影像AI辅助系统帮助我们的放射科医生将阅片效率提升了4倍，早期病变检出率提高了35%，改变了传统的诊断工作流。',name:'李文静',role:'副院长 · 仁和医疗集团',init:'李',result:'↑ 阅片效率提升 4×'},
+  {quote:'工业质检系统上线后，我们的产线缺陷漏检率从3.2%降至0.08%，每年节约质检人力成本超过800万元。',name:'王建国',role:'生产总监 · 精工智造',init:'王',result:'↑ 缺陷漏检率降至 0.08%'},
+  {quote:'供应链智能系统让我们在大促期间的库存周转天数缩短了40%，缺货率降低了52%，这是过去三年最好的运营数据。',name:'张雅婷',role:'供应链VP · 悦享零售',init:'张',result:'↑ 库存周转提升 40%'},
+  {quote:'知识图谱平台将我们内部跨部门的查询响应时间从数天缩短到分钟级，员工自助获取信息的效率提升了12倍。',name:'赵思远',role:'CIO · 华远集团',init:'赵',result:'↑ 信息检索效率 12×'}
+];
+
+const techData = [
+  {num:'99.9%',label:'系统可用性',desc:'分布式架构设计，多活部署，保障企业级服务持续稳定运行',width:'99.9'},
+  {num:'<50ms',label:'推理延迟',desc:'模型推理引擎端到端延迟低于50ms，满足实时业务响应需求',width:'90'},
+  {num:'10B+',label:'日处理Token数',desc:'每天处理超百亿级Token推理请求，承载海量业务并发',width:'88'},
+  {num:'SOC2',label:'安全合规认证',desc:'通过国际权威安全审计认证，数据安全与隐私保护达到金融级标准',width:'95'}
+];
+
+// ── STATE ───────────────────────────────────────────────────────────
+let solutionModalIdx = 0;
+
+// ── HELPERS ─────────────────────────────────────────────────────────
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+
+function showToast(msg, isError=false) {
+  const t = $('#toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (isError ? ' error' : '');
+  clearTimeout(t._tid);
+  t._tid = setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+function openModal(id) { $('#'+id).classList.add('open'); document.body.style.overflow='hidden'; }
+function closeModal(id) { $('#'+id).classList.remove('open'); document.body.style.overflow=''; }
+// Expose for onclick
+window.Nova = { openBooking() { openModal('bookingModal'); }, closeModal };
+
+// Close modals on backdrop click
+$$('.modal-overlay').forEach(ov => {
+  ov.addEventListener('click', e => { if (e.target === ov) closeModal(ov.id); });
+});
+
+// Close modals on Escape
+document.addEventListener('keydown', e => { if (e.key==='Escape') $$('.modal-overlay.open').forEach(m => closeModal(m.id)); });
+
+// Copy to clipboard
+document.addEventListener('click', e => {
+  const btn = e.target.closest('.copy-btn');
+  if (!btn) return;
+  const text = btn.dataset.copy;
+  navigator.clipboard.writeText(text).then(() => showToast('✓ 已复制: ' + text)).catch(() => showToast('复制失败，请手动复制', true));
+});
+
+// ── HAMBURGER ───────────────────────────────────────────────────────
+(function(){
+  const btn = $('#hamburger'), menu = $('#mobileMenu');
+  const lines = btn.querySelectorAll('span');
+  let open = false;
+  btn.addEventListener('click', () => {
+    open = !open;
+    menu.style.maxHeight = open ? menu.scrollHeight + 'px' : '0';
+    lines[0].style.transform = open ? 'rotate(45deg) translate(5px,5px)' : '';
+    lines[1].style.opacity = open ? '0' : '1';
+    lines[2].style.transform = open ? 'rotate(-45deg) translate(5px,-5px)' : '';
+  });
+  // Close mobile menu on link click
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    open = false; menu.style.maxHeight = '0';
+    lines[0].style.transform = ''; lines[1].style.opacity = '1'; lines[2].style.transform = '';
+  }));
+  // Update max-height on resize
+  window.addEventListener('resize', () => { if (open) menu.style.maxHeight = menu.scrollHeight + 'px'; });
+})();
+
+// ── NAVBAR SCROLL ───────────────────────────────────────────────────
+(function(){
+  const nav = $('#navbar');
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY > 40;
+    nav.classList.toggle('shadow-[0_1px_32px_rgba(0,0,0,0.4)]', scrolled);
+    nav.style.background = scrolled ? 'rgba(14,16,21,0.97)' : 'rgba(14,16,21,0.85)';
+  });
+})();
+
+// ── TYPEWRITER ─────────────────────────────────────────────────────
+(function(){
+  const target = $('#typewriterTarget'), cursor = $('#typeCursor');
+  if (!target) return;
+  const fullText = target.textContent;
+  target.textContent = '';
+  let i = 0;
+  const timer = setInterval(() => {
+    target.textContent += fullText[i];
+    i++;
+    if (i >= fullText.length) { clearInterval(timer); cursor.style.display = 'none'; }
+  }, 120);
+})();
+
+// ── RENDER FEATURE CARDS ────────────────────────────────────────────
+(function(){
+  const grid = $('#featuresGrid');
+  if (!grid) return;
+  grid.innerHTML = featureData.map((f, i) => `
+    <div class="feature-card relative bg-nova-card border border-white/[0.06] rounded-xl p-8 sm:p-10 transition-all duration-350 cursor-pointer overflow-hidden reveal hover:bg-nova-hover hover:border-nova-cyan/40 hover:-translate-y-1.5 hover:shadow-[0_4px_24px_rgba(0,0,0,0.3),0_1px_4px_rgba(0,0,0,0.2)] group"
+         style="transition-delay:${i*0.1}s"
+         onclick="Nova.openFeature(${i})">
+      <div class="w-12 h-12 rounded-lg bg-nova-cyan/10 flex items-center justify-center text-lg transition-all duration-350 group-hover:bg-nova-cyan/20 group-hover:text-[#00e8bc] group-hover:scale-110" style="color:#00d4aa">${f.icon}</div>
+      <span class="inline-block text-[0.7rem] font-semibold tracking-wider uppercase text-nova-cyan mb-4 transition-all duration-350 group-hover:text-[#00e8bc]">${f.tag}</span>
+      <h3 class="text-lg font-semibold text-[#e8eaed] mb-2 transition-all duration-350 group-hover:text-white">${f.title}</h3>
+      <p class="text-sm text-[#9ca3af] leading-relaxed transition-all duration-350 group-hover:text-[#c8ccd4]">${f.desc}</p>
+    </div>
+  `).join('');
+})();
+
+// ── RENDER SOLUTION CARDS ───────────────────────────────────────────
+(function(){
+  const track = $('#solsTrack');
+  if (!track) return;
+  track.innerHTML = solutionData.map((s, i) => `
+    <div class="sol-card-item solution-card rounded-xl overflow-hidden bg-nova-card border border-white/[0.06] transition-all duration-350 flex flex-col hover:border-nova-cyan/40 hover:-translate-y-1 hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] cursor-pointer group reveal"
+         onclick="Nova.openSolution(${i})">
+      <div class="h-[140px] flex items-center justify-center relative overflow-hidden" style="background:${s.bg}">
+        <span class="text-5xl absolute transition-all duration-500 group-hover:opacity-[0.14] group-hover:scale-125 group-hover:text-nova-cyan" style="opacity:0.08">${s.icon}</span>
+      </div>
+      <div class="p-6 sm:p-8 flex-1 flex flex-col">
+        <h3 class="text-lg font-semibold text-[#e8eaed] mb-2 transition-all duration-350 group-hover:text-white">${s.title}</h3>
+        <p class="text-sm text-[#9ca3af] leading-relaxed flex-1 mb-5 transition-all duration-350"><span class="group-hover:text-[#e8eaed] group-hover:text-[1.05em] font-semibold transition-all">${s.short.match(/^[^，。]+/)[0]}</span>${s.short.replace(/^[^，。]+/,'')}</p>
+        <div class="flex gap-2 flex-wrap">${s.tabs.map(t => `<span class="sol-tag text-xs px-2.5 py-1 rounded-full bg-nova-cyan/10 text-nova-cyan font-medium transition-all duration-350 cursor-pointer hover:bg-nova-cyan/25 hover:text-[#00e8bc] hover:border-nova-cyan/30 border border-transparent" onclick="event.stopPropagation();">${t}</span>`).join('')}</div>
+      </div>
+    </div>
+  `).join('');
+})();
+
+// ── RENDER CASE CARDS ──────────────────────────────────────────────
+(function(){
+  const track = $('#casesTrack');
+  if (!track) return;
+  track.innerHTML = caseData.map(c => `
+    <div class="case-card bg-nova-card border border-white/[0.06] rounded-xl p-8 sm:p-10 transition-all duration-350 flex flex-col hover:bg-nova-hover hover:border-white/[0.12] hover:-translate-y-1 hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] cursor-default group">
+      <div class="text-sm leading-relaxed text-[#9ca3af] flex-1 italic mb-7">
+        <span class="block text-3xl text-nova-cyan font-bold leading-none not-italic mb-0 transition-all duration-350 group-hover:scale-110 group-hover:text-[#00e8bc]">"</span>
+        ${c.quote}
+      </div>
+      <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full bg-gradient-to-br from-nova-cyan to-nova-blue flex items-center justify-center font-semibold text-sm text-nova-deep shrink-0">${c.init}</div><div><span class="block text-sm font-semibold text-[#e8eaed]">${c.name}</span><span class="block text-xs text-[#6b7280] mt-0.5">${c.role}</span></div></div>
+      <div class="inline-flex items-center gap-1 text-sm font-semibold text-nova-cyan mt-5 transition-all duration-350 group-hover:text-[#00e8bc] group-hover:text-base group-hover:scale-105">${c.result}</div>
+    </div>
+  `).join('');
+})();
+
+// ── RENDER TECH CARDS ───────────────────────────────────────────────
+(function(){
+  const grid = $('#techGrid');
+  if (!grid) return;
+  grid.innerHTML = techData.map((t, i) => `
+    <div class="text-center p-8 sm:p-10 bg-nova-card border border-white/[0.06] rounded-xl transition-all duration-350 cursor-default hover:-translate-y-1.5 hover:border-white/[0.12] hover:shadow-[0_4px_24px_rgba(0,0,0,0.3)] reveal" style="transition-delay:${i*0.15}s;animation-delay:${i*0.15}s">
+      <div class="text-4xl font-bold bg-gradient-to-r from-nova-cyan to-nova-blue bg-clip-text text-transparent leading-none mb-2">${t.num}</div>
+      <h3 class="text-base font-semibold text-[#e8eaed] mb-2">${t.label}</h3>
+      <p class="text-sm text-[#9ca3af]">${t.desc}</p>
+      <div class="tech-bar mt-5"><span data-width="${t.width}"></span></div>
+    </div>
+  `).join('');
+})();
+
+// ── FEATURE MODAL ───────────────────────────────────────────────────
+function openFeature(idx) {
+  const f = featureData[idx];
+  const content = $('#featureModalContent');
+  content.innerHTML = `
+    <div class="flex items-center gap-3 mb-2">
+      <div class="w-10 h-10 rounded-lg bg-nova-cyan/10 flex items-center justify-center text-lg text-nova-cyan">${f.icon}</div>
+      <span class="text-xs font-semibold tracking-widest uppercase text-nova-cyan">${f.tag}</span>
+    </div>
+    <h3 class="text-2xl font-semibold text-[#e8eaed] mb-1">${f.title}</h3>
+    <p class="text-nova-cyan text-sm font-medium mb-8">${f.core}</p>
+    <div class="grid sm:grid-cols-2 gap-6 mb-6">
+      <div>
+        <h4 class="text-sm font-semibold text-[#e8eaed] uppercase tracking-wider mb-3">技术优势</h4>
+        <ul class="space-y-2">${f.advantages.map(a => `<li class="flex items-start gap-2 text-sm text-[#9ca3af]"><span class="text-nova-cyan mt-0.5">✓</span>${a}</li>`).join('')}</ul>
+      </div>
+      <div>
+        <h4 class="text-sm font-semibold text-[#e8eaed] uppercase tracking-wider mb-3">适配行业场景</h4>
+        <ul class="space-y-2">${f.scenarios.map(s => `<li class="flex items-start gap-2 text-sm text-[#9ca3af]"><span class="text-nova-blue mt-0.5">◉</span>${s}</li>`).join('')}</ul>
+      </div>
+    </div>
+    <div>
+      <h4 class="text-sm font-semibold text-[#e8eaed] uppercase tracking-wider mb-3">落地案例</h4>
+      <div class="grid sm:grid-cols-2 gap-3">
+        ${f.cases.map(c => `<div class="bg-nova-dark border border-white/[0.06] rounded-lg p-4"><div class="text-nova-cyan font-semibold text-sm mb-1">${c.metric}</div><div class="text-xs text-[#6b7280]">${c.detail}</div></div>`).join('')}
+      </div>
+    </div>
+  `;
+  openModal('featureModal');
+}
+window.Nova.openFeature = openFeature;
+
+// ── SOLUTION MODAL ──────────────────────────────────────────────────
+function openSolution(idx) {
+  solutionModalIdx = idx;
+  renderSolutionModal();
+  openModal('solutionModal');
+}
+window.Nova.openSolution = openSolution;
+
+function renderSolutionModal() {
+  const s = solutionData[solutionModalIdx];
+  const content = $('#solutionModalContent');
+  content.innerHTML = `
+    <div class="flex items-center gap-3 mb-2">
+      <span class="text-3xl">${s.icon}</span>
+      <span class="text-xs font-semibold tracking-widest uppercase text-nova-cyan">行业解决方案</span>
+    </div>
+    <h3 class="text-2xl font-semibold text-[#e8eaed] mb-4">${s.title}</h3>
+    <!-- Pain Points -->
+    <div class="bg-nova-dark border border-white/[0.06] rounded-lg p-5 mb-5">
+      <h4 class="text-sm font-semibold text-[#e8eaed] uppercase tracking-wider mb-2">业务痛点</h4>
+      <p class="text-sm text-[#9ca3af] leading-relaxed">${s.painPoints}</p>
+    </div>
+    <!-- Solution Flow -->
+    <div class="mb-5">
+      <h4 class="text-sm font-semibold text-[#e8eaed] uppercase tracking-wider mb-3">解决方案流程</h4>
+      <div class="flex flex-wrap items-center gap-1 sm:gap-2">
+        ${s.flow.map((f,i) => `<div class="flex items-center gap-1 sm:gap-2">${i>0?'<span class="text-nova-cyan text-xs">→</span>':''}<div class="bg-nova-cyan/10 border border-nova-cyan/20 rounded-lg px-3 py-2 text-xs text-nova-cyan text-center whitespace-pre-line leading-relaxed">${f}</div></div>`).join('')}
+      </div>
+    </div>
+    <!-- Results -->
+    <div class="mb-5">
+      <h4 class="text-sm font-semibold text-[#e8eaed] uppercase tracking-wider mb-3">落地效果</h4>
+      <div class="grid grid-cols-3 gap-3">
+        ${s.results.map(r => `<div class="bg-nova-dark border border-white/[0.06] rounded-lg p-4 text-center"><div class="text-nova-cyan text-xl font-bold mb-1">${r.value}</div><div class="text-xs text-[#6b7280]">${r.label}</div></div>`).join('')}
+      </div>
+    </div>
+    <!-- Compatible Modules -->
+    <div class="flex flex-wrap gap-2">
+      <span class="text-xs text-[#6b7280]">适配功能模块：</span>
+      ${s.modules.map(m => `<span class="text-xs px-2.5 py-1 rounded-full bg-nova-cyan/10 text-nova-cyan font-medium border border-nova-cyan/15">${m}</span>`).join('')}
+    </div>
+  `;
+  $('#solIndicator').textContent = `${solutionModalIdx + 1} / ${solutionData.length}`;
+}
+
+$('#solPrev').addEventListener('click', () => {
+  solutionModalIdx = (solutionModalIdx - 1 + solutionData.length) % solutionData.length;
+  renderSolutionModal();
+});
+$('#solNext').addEventListener('click', () => {
+  solutionModalIdx = (solutionModalIdx + 1) % solutionData.length;
+  renderSolutionModal();
+});
+
+// ── CAROUSEL: Cases ─────────────────────────────────────────────────
+(function(){
+  const track = $('#casesTrack'), dots = $('#carouselDots'), prev = $('#carouselPrev'), next = $('#carouselNext');
+  if (!track) return;
+  const cards = caseData; // count from data
+  let idx = 0, auto;
+  function getV() { return window.innerWidth < 769 ? 1 : window.innerWidth < 1025 ? 2 : 3; }
+  function total() { return Math.max(0, cards.length - getV()); }
+  function render() {
+    const m = total(); if (idx > m) idx = m;
+    track.style.transform = `translateX(${-idx * (100 / getV())}%)`;
+    dots.innerHTML = '';
+    for (let i = 0; i <= m; i++) {
+      const s = document.createElement('span');
+      s.className = 'w-2 h-2 rounded-full cursor-pointer transition-all duration-350 ' + (i === idx ? 'bg-nova-cyan w-6 !rounded-sm' : 'bg-[#282d3a]');
+      s.addEventListener('click', () => { idx = i; render(); });
+      dots.appendChild(s);
+    }
+  }
+  prev.addEventListener('click', () => { idx = Math.max(0, idx - 1); render(); });
+  next.addEventListener('click', () => { idx = Math.min(total(), idx + 1); render(); });
+  function startAuto() { auto = setInterval(() => { idx = (idx >= total() ? 0 : idx + 1); render(); }, 5000); }
+  startAuto();
+  const carousel = $('#casesCarousel');
+  carousel.addEventListener('mouseenter', () => clearInterval(auto));
+  carousel.addEventListener('mouseleave', startAuto);
+  window.addEventListener('resize', render);
+  render();
+})();
+
+// ── CAROUSEL: Solutions ─────────────────────────────────────────────
+(function(){
+  const track = $('#solsTrack'), dots = $('#solsDots'), prev = $('#solsPrev'), next = $('#solsNext');
+  if (!track) return;
+  const cards = solutionData;
+  let idx = 0, auto;
+  function getV() { return window.innerWidth < 769 ? 1 : 2; }
+  function total() { return Math.max(0, cards.length - getV()); }
+  function render() {
+    const m = total(); if (idx > m) idx = m;
+    track.style.transform = `translateX(${-idx * (100 / getV())}%)`;
+    dots.innerHTML = '';
+    for (let i = 0; i <= m; i++) {
+      const s = document.createElement('span');
+      s.className = 'w-2 h-2 rounded-full cursor-pointer transition-all duration-350 ' + (i === idx ? 'bg-nova-cyan w-6 !rounded-sm' : 'bg-[#282d3a]');
+      s.addEventListener('click', () => { idx = i; render(); });
+      dots.appendChild(s);
+    }
+  }
+  prev.addEventListener('click', () => { idx = Math.max(0, idx - 1); render(); });
+  next.addEventListener('click', () => { idx = Math.min(total(), idx + 1); render(); });
+  function startAuto() { auto = setInterval(() => { idx = (idx >= total() ? 0 : idx + 1); render(); }, 5000); }
+  startAuto();
+  const carousel = $('#solsCarousel');
+  carousel.addEventListener('mouseenter', () => clearInterval(auto));
+  carousel.addEventListener('mouseleave', startAuto);
+  window.addEventListener('resize', render);
+  render();
+})();
+
+// ── SCROLL REVEAL ───────────────────────────────────────────────────
+(function(){
+  const els = $$('.reveal');
+  const o = new IntersectionObserver(entries => {
+    for (const e of entries) { if (e.isIntersecting) { e.target.classList.add('visible'); o.unobserve(e.target); } }
+  }, { threshold: 0.1 });
+  els.forEach(el => o.observe(el));
+  // Observe dynamically added reveals
+  const mo = new MutationObserver(() => {
+    $$('.reveal:not(.visible)').forEach(el => { if (!el._observed) { el._observed = true; o.observe(el); } });
+  });
+  mo.observe(document.body, { childList: true, subtree: true });
+})();
+
+// ── COUNTER + PROGRESS ──────────────────────────────────────────────
+(function(){
+  const stats = $$('.stat-num');
+  const o = new IntersectionObserver(entries => {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      const el = e.target; o.unobserve(el);
+      const target = parseInt(el.dataset.target), hp = el.classList.contains('plus');
+      let cur = 0;
+      const step = Math.max(1, Math.floor(target / 60));
+      const ti = setInterval(() => { cur += step; if (cur >= target) { cur = target; clearInterval(ti); } el.textContent = cur + (hp ? '+' : ''); }, 25);
+      // Also animate progress bar
+      const card = el.closest('.stat-card');
+      if (card) {
+        const bar = card.querySelector('.stat-progress span');
+        if (bar) setTimeout(() => { bar.style.width = (parseInt(el.dataset.target) / 500 * 100) + '%'; }, 300);
+      }
+    }
+  }, { threshold: 0.5 });
+  stats.forEach(el => o.observe(el));
+})();
+
+// ── TECH BAR ────────────────────────────────────────────────────────
+(function(){
+  const bars = $$('.tech-bar span');
+  const o = new IntersectionObserver(entries => {
+    for (const e of entries) { if (!e.isIntersecting) continue; const bar = e.target; o.unobserve(bar); setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, 200); }
+  }, { threshold: 0.3 });
+  bars.forEach(el => o.observe(el));
+})();
+
+// ── BOOKING FORM ────────────────────────────────────────────────────
+(function(){
+  const form = $('#bookingForm'), btn = $('#bookingBtn');
+  if (!form) return;
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const name = fd.get('name'), email = fd.get('email'), company = fd.get('company');
+    if (!name || !email || !company) { showToast('请填写必填项（姓名、企业名称、联系邮箱）', true); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showToast('请输入有效的邮箱地址', true); return; }
+    btn.textContent = '提交中...'; btn.disabled = true; btn.style.opacity = '0.7';
+    // Simulate send to wujiashuaiwu492@gmail.com
+    await new Promise(r => setTimeout(r, 1200));
+    showToast('✓ 预约成功！我们将在24小时内与您联系');
+    btn.textContent = '提交预约 →'; btn.disabled = false; btn.style.opacity = '1';
+    form.reset();
+    setTimeout(() => closeModal('bookingModal'), 1500);
+  });
+})();
+
+// ── CONTACT FORM ────────────────────────────────────────────────────
+(function(){
+  const form = $('#contactForm'), btn = $('#contactBtn'), btnText = $('#contactBtnText'), btnSpin = $('#contactBtnSpinner'), errEl = $('#contactError');
+  if (!form) return;
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const fd = new FormData(form);
+    const name = fd.get('name'), email = fd.get('email');
+    errEl.classList.add('hidden');
+    if (!name || !email) { errEl.textContent = '请填写必填项（姓名、企业邮箱）'; errEl.classList.remove('hidden'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { errEl.textContent = '请输入有效的企业邮箱地址'; errEl.classList.remove('hidden'); return; }
+    btnText.classList.add('hidden'); btnSpin.classList.remove('hidden'); btn.disabled = true; btn.style.opacity = '0.7';
+    await new Promise(r => setTimeout(r, 1500));
+    showToast('✓ 提交成功！我们的专家将在24小时内与您联系');
+    btnText.classList.remove('hidden'); btnSpin.classList.add('hidden'); btn.disabled = false; btn.style.opacity = '1';
+    form.reset();
+  });
+  form.addEventListener('reset', () => { errEl.classList.add('hidden'); });
+})();
+
+// ── SMOOTH ANCHOR (polyfill for all links) ──────────────────────────
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  const id = a.getAttribute('href');
+  if (id === '#') return;
+  e.preventDefault();
+  const target = document.querySelector(id);
+  if (target) {
+    const navH = $('#navbar').offsetHeight;
+    const top = target.getBoundingClientRect().top + window.pageYOffset - navH - 16;
+    window.scrollTo({ top, behavior: 'smooth' });
+    // Close mobile menu if open
+    const menu = $('#mobileMenu');
+    if (menu.style.maxHeight !== '0px' && menu.style.maxHeight !== '') {
+      menu.style.maxHeight = '0';
+      const lines = $('#hamburger').querySelectorAll('span');
+      lines[0].style.transform = ''; lines[1].style.opacity = '1'; lines[2].style.transform = '';
+    }
+  }
+});
+
+// ── THREE.JS ────────────────────────────────────────────────────────
+(function(){
+  const canvas = $('#hero-canvas');
+  if (!canvas) return;
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+  renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+  const nodes = []; const N = 120;
+  for (let i = 0; i < N; i++) {
+    const r = 5 + Math.random() * 10, theta = Math.random() * Math.PI * 2, phi = Math.acos(2 * Math.random() - 1);
+    nodes.push({ x: r * Math.sin(phi) * Math.cos(theta), y: r * Math.sin(phi) * Math.sin(theta), z: r * Math.cos(phi), vx: (Math.random() - 0.5) * 0.003, vy: (Math.random() - 0.5) * 0.003, vz: (Math.random() - 0.5) * 0.003 });
+  }
+  const pos = new Float32Array(N * 3);
+  const nodeGeo = new THREE.BufferGeometry(); nodeGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  const nodeMat = new THREE.PointsMaterial({ size: 0.12, color: 0x00d4aa, transparent: true, opacity: 0.6, blending: THREE.AdditiveBlending, sizeAttenuation: true });
+  const nodeMesh = new THREE.Points(nodeGeo, nodeMat); scene.add(nodeMesh);
+  const edgeMat = new THREE.LineBasicMaterial({ color: 0x00d4aa, transparent: true, opacity: 0.08, blending: THREE.AdditiveBlending });
+  let edgeMesh = new THREE.LineSegments(new THREE.BufferGeometry(), edgeMat); scene.add(edgeMesh);
+  function updateEdges() {
+    const pairs = [];
+    for (let i = 0; i < N; i++) for (let j = i + 1; j < N; j++) { const dx = nodes[i].x - nodes[j].x, dy = nodes[i].y - nodes[j].y, dz = nodes[i].z - nodes[j].z; if (Math.sqrt(dx * dx + dy * dy + dz * dz) < 3.3) pairs.push([i, j]); }
+    const v = []; for (const [i, j] of pairs) { v.push(nodes[i].x, nodes[i].y, nodes[i].z, nodes[j].x, nodes[j].y, nodes[j].z); }
+    if (!v.length) { edgeMesh.visible = false; return; }
+    edgeMesh.visible = true;
+    const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(v, 3)); edgeMesh.geometry.dispose(); edgeMesh.geometry = g;
+  }
+  updateEdges();
+  camera.position.set(0, 1, 16); camera.lookAt(0, 0, 0);
+  let mx = 0, my = 0, t = 0;
+  document.addEventListener('mousemove', e => { mx = (e.clientX / window.innerWidth - 0.5) * 2; my = (e.clientY / window.innerHeight - 0.5) * 2; });
+  function animate() {
+    requestAnimationFrame(animate); t += 0.003;
+    for (const n of nodes) { n.x += n.vx; n.y += n.vy; n.z += n.vz; const r = Math.sqrt(n.x * n.x + n.y * n.y + n.z * n.z); if (r > 12 || r < 4) { n.vx *= -1; n.vy *= -1; n.vz *= -1; } }
+    const p = nodeMesh.geometry.attributes.position.array;
+    for (let i = 0; i < N; i++) { p[i * 3] = nodes[i].x; p[i * 3 + 1] = nodes[i].y; p[i * 3 + 2] = nodes[i].z; }
+    nodeMesh.geometry.attributes.position.needsUpdate = true;
+    updateEdges();
+    nodeMesh.rotation.y += 0.0006;
+    nodeMesh.rotation.x = Math.sin(t * 0.2) * 0.05 + my * 0.03;
+    nodeMesh.rotation.z = Math.cos(t * 0.15) * 0.03 + mx * 0.02;
+    renderer.render(scene, camera);
+  }
+  animate();
+  let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => { const w = canvas.clientWidth, h = canvas.clientHeight; renderer.setSize(w, h); camera.aspect = w / h; camera.updateProjectionMatrix(); }, 200); });
+})();
+
+// ── EXPORT ──────────────────────────────────────────────────────────
+return { openBooking() { openModal('bookingModal'); }, closeModal, openFeature, openSolution };
+
+})();
+</script>
+</body>
+</html>
